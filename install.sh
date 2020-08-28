@@ -42,11 +42,13 @@ function install-ubuntu-mirror {
 
 function install-debian-mirror {
 #TODO
+  curl -o /etc/apt/sources.list https://raw.githubusercontent.com/treerootboy/mirrors/master/os/debian/$VERSION_ID
   apt update
 }
 
 function install-alpine-mirror {
 #TODO
+  sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
   apk update
 }
 
