@@ -1,25 +1,3 @@
-###########
-#   OS    #
-###########
-source /etc/os-release
-case $ID in
-centos):
-  install-centos-mirror
-  ;;
-
-ubuntu):
-  install-ubuntu-mirror
-  ;;
-  
-debian):
-  install-debian-mirror
-  ;;
-  
-alpine):
-  install-alpine-mirror
-  ;;
-
-
 function install-centos-mirror {
   curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-$VERSION_ID.repo
   
@@ -51,6 +29,27 @@ function install-alpine-mirror {
   sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
   apk update
 }
+
+###########
+#   OS    #
+###########
+source /etc/os-release
+case $ID in
+centos):
+  install-centos-mirror
+  ;;
+
+ubuntu):
+  install-ubuntu-mirror
+  ;;
+  
+debian):
+  install-debian-mirror
+  ;;
+  
+alpine):
+  install-alpine-mirror
+  ;;
 
 
 ###########
