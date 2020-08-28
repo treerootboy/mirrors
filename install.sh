@@ -1,4 +1,5 @@
-function install-centos-mirror {
+#!/bin/sh
+function install-centos-mirror() {
   curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-$VERSION_ID.repo
   
   # epel 在 centos 8 有不同的处理
@@ -13,18 +14,18 @@ function install-centos-mirror {
   yum update
 }
 
-function install-ubuntu-mirror {
+function install-ubuntu-mirror() {
   sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
   apt update
 }
 
-function install-debian-mirror {
+function install-debian-mirror() {
 #TODO
   curl -o /etc/apt/sources.list https://raw.githubusercontent.com/treerootboy/mirrors/master/os/debian/$VERSION_ID
   apt update
 }
 
-function install-alpine-mirror {
+function install-alpine-mirror() {
 #TODO
   sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
   apk update
