@@ -58,13 +58,13 @@ alpine):
 ###########
 
 # pip
-cat <<EOF > ~/pip/pip.conf
-[global]
-index-url = https://mirrors.aliyun.com/pypi/simple/
+# cat <<EOF > ~/pip/pip.conf
+# [global]
+# index-url = https://mirrors.aliyun.com/pypi/simple/
 
-[install]
-trusted-host=mirrors.aliyun.com
-EOF
+# [install]
+# trusted-host=mirrors.aliyun.com
+# EOF
 
 # composer
 which composer && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
