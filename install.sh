@@ -70,11 +70,13 @@ EOF
 which composer && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 
 # npm
+if [ `grep 'registry.npm.taobao.org' ~/.bashrc -c` -eq 0 ]; then
 echo '#alias for cnpm
 alias cnpm="npm --registry=https://registry.npm.taobao.org
   --cache=$HOME/.npm/.cache/cnpm
   --disturl=https://npm.taobao.org/dist
   --userconfig=$HOME/.cnpmrc"' >> ~/.bashrc && source ~/.bashrc
+fi
 
 
 # golang
