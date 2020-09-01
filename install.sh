@@ -57,6 +57,7 @@ esac
 
 # pip
 mkdir ~/pip
+rm ~/pip/pip.conf
 cat <<EOF > ~/pip/pip.conf
  [global]
  index-url = https://mirrors.aliyun.com/pypi/simple/
