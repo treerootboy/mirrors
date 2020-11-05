@@ -1,4 +1,8 @@
 #!/bin/bash
+log_info() {
+    echo -e "\033[32m$1\033[0m\n"
+}
+
 install_centos_mirror() {
   curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-$VERSION_ID.repo
 
@@ -32,6 +36,7 @@ install_alpine_mirror() {
 ###########
 #   OS    #
 ###########
+log_info "正在安装软件库镜像..."
 source /etc/os-release
 case $ID in
 centos)
@@ -56,6 +61,7 @@ esac
 ###########
 
 # docker
+log_info "正在设置 docker 镜像..."
 mkdir -p /etc/docker
 cat <<EOF > /etc/docker/daemon.json
 {
@@ -66,6 +72,7 @@ cat <<EOF > /etc/docker/daemon.json
 EOF
 
 # pip
+log_info "正在设置 pip 镜像..."
 mkdir -p ~/pip
 cat <<EOF > ~/pip/pip.conf
  [global]
@@ -76,9 +83,11 @@ cat <<EOF > ~/pip/pip.conf
 EOF
 
 # composer
+log_info "正在设置 composer 镜像..."
 which composer && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 
 # npm
+log_info "正在设置 npm 镜像..."
 if [ `grep 'registry.npm.taobao.org' ~/.bashrc -c` -eq 0 ]; then
 echo '#alias for cnpm
 alias cnpm="npm --registry=https://registry.npm.taobao.org
@@ -89,4 +98,5 @@ fi
 
 
 # golang
+log_info "正在设置 golang 镜像..."
 export GOPROXY=https://mirrors.aliyun.com/goproxy/
