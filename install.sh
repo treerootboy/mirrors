@@ -11,22 +11,22 @@ install_centos_mirror() {
     curl -o /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-$VERSION_ID.repo
   fi
 
-  yum update
+  yum update -y
 }
 
 install_ubuntu_mirror() {
   sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
-  apt update
+  apt update -y
 }
 
 install_debian_mirror() {
   curl -o /etc/apt/sources.list https://raw.githubusercontent.com/treerootboy/mirrors/master/os/debian/$VERSION_ID
-  apt update
+  apt update -y
 }
 
 install_alpine_mirror() {
   sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
-  apk update
+  apk update -y
 }
 
 ###########
