@@ -55,6 +55,16 @@ esac
 # package #
 ###########
 
+# docker
+mkdir -p /etc/docker
+cat <<EOF > /etc/docker/daemon.json
+{
+  "registry-mirrors": [
+    "https://nprgmgnb.mirror.aliyuncs.com"
+  ]
+}
+EOF
+
 # pip
 mkdir -p ~/pip
 cat <<EOF > ~/pip/pip.conf
